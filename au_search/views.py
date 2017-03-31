@@ -7,7 +7,7 @@ from au_search.models import Part
 def home_view(request):
     return render(request, 'au_search/home.html')
 
-PAGE_SIZE = 10
+PAGE_SIZE = 25
 
 def search_view(request):
     keyword = request.GET.get('keyword','')

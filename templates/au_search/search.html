@@ -2,7 +2,8 @@
 {% load staticfiles %}
 
 {% block body_block%}
-<h1 class="display-4">Found <strong>{{ total_found }}</strong> results for search: <strong>{{ keyword }}</strong></h1>
+<h1 class="display-5"><strong>{{ total_found }}</strong> results found for search <strong>'{{ keyword }}'</strong></h1>
+<hr />
 {% for part in page_parts %}
 <div>
     <p>{{ part.part_id }}</p>
