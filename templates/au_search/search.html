@@ -2,13 +2,33 @@
 {% load staticfiles %}
 
 {% block body_block%}
+
 <h1 class="display-5"><strong>{{ total_found }}</strong> results found for search <strong>'{{ keyword }}'</strong></h1>
+
+<table class="table">
+  <thead class="thead-inverse">
+    <tr>
+      <th>Part#</th>
+      <th>Description</th>
+      <th>stock</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for part in page_parts %}
+        <tr>
+            <td>{{ part.part_id }}</td>
+            <td>{{ part.description }}</td>
+            <td>{{ part.stock }}</td>
+            <td>{{ part.price }}</td>
+        </tr>
+    {% endfor %}
+  </tbody>
+</table>
 <hr />
-{% for part in page_parts %}
-<div>
-    <p>{{ part.part_id }}</p>
-</div>
-{% endfor %}
+
+
+
 <nav aria-label="Page navigation">
     <ul class="pagination justify-content-center">
         {% if current_page.has_previous %}
