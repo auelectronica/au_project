@@ -30,14 +30,30 @@ def get_parsed_db_file(sufix):
 def populate():
     for  sufix in FILE_SUFIXES:
         list_of_parts = get_parsed_db_file(sufix)
-        for part in list_of_parts:
-            print_part(part)
+        models = map(dic_to_model,list_of_parts)
+        Part.objects.bulk_create(models)
+
 
 def save_part_to_django_db(part):
+    Part.objects.create( 
+            part_id=part['id'],
+            description=part['stock'],
+            price=part['price']['1'],
+            stock=part['stock'],
+    )
+
+def dic_to_model(part):
+    print_part(part)
+    return Part( 
+            part_id=part['id'],
+            description=part['stock'],
+            price=part['price']['1'],
+            stock=part['stock'])
 
 def print_part(part):
     print('part no: {:<25} price: {:<10} stock:{:<6}'.format(part['id'],part['price']['1'],part['stock']))
 
 if __name__ == '__main__':
-    print("Starting Rango population script...")
+    print("Starting database population script...")
     populate()
+    print("database population complete")
