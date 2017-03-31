@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class Part(models.Model):
     part_id = models.CharField(max_length=64, unique=True)
-    description = models.CharField(max_length=128, default='')
+    description = models.CharField(max_length=128, default='', blank=True)
     price = models.FloatField()
     stock = models.IntegerField(default=0)
     
