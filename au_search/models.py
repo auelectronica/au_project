@@ -5,6 +5,7 @@ class Part(models.Model):
     part_id = models.CharField(max_length=64, unique=True)
     description = models.CharField(max_length=128, default='')
     price = models.FloatField()
+    stock = models.IntegerField(default=0)
     
     def __str__(self):
         return self.part_id
