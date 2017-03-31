@@ -37,7 +37,7 @@ def populate():
 def save_part_to_django_db(part):
     Part.objects.create( 
             part_id=part['id'],
-            description=part['stock'],
+            description=part['descripcion'],
             price=part['price']['1'],
             stock=part['stock'],
     )
@@ -46,7 +46,7 @@ def dic_to_model(part):
     print_part(part)
     return Part( 
             part_id=part['id'],
-            description=part['stock'],
+            description=part['descripcion'],
             price=part['price']['1'],
             stock=part['stock'])
 
